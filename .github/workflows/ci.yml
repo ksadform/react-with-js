@@ -22,6 +22,15 @@ jobs:
             - name: Display Branch Name
               run: echo "$BRANCH_NAME"
 
+        
+
+
+                 # ------ Commit Changes ------
+            - name: Pull
+              uses: EndBug/add-and-commit@v9
+              with:
+                  pull: '--rebase origin main'
+              
             - name: Dummy write
               run: echo //commit  >> src/main.jsx;
 
@@ -30,7 +39,6 @@ jobs:
               uses: EndBug/add-and-commit@v9
               with:
                   add: '.'
-                  pull: '--rebase origin main'
                   commit: --signoff
                   message: 'Built Lang File'
                   push: '-u origin $BRANCH_NAME'
