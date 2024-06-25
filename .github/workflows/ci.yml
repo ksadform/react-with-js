@@ -41,7 +41,7 @@ jobs:
                   add: '.'
                   commit: --signoff
                   message: 'Built Lang File'
-                  push: "-u origin $BRANCH_NAME"
+                  push: "-u origin ${{ github.head_ref || github.ref_name }}"
 
 
             - name: Yarn
