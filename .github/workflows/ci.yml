@@ -19,11 +19,11 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
+            - name: Display Branch Name
+              run: echo "${{github.head_ref}}"
+
             - name: Yarn
               run: yarn
 
             - name: Build
               run: yarn build
-
-            - name: Display Branch Name
-              run: echo "${{github.ref}}"
