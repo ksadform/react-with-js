@@ -21,3 +21,6 @@ jobs:
 
             - name: Build
               run: yarn build
+
+            - name: Display Branch Name
+              run: echo "Current Branch: ${{ github.ref }}"
