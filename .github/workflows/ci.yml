@@ -11,6 +11,7 @@ on:
 
 env:
     BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+    EMAIL: ${{github.event.pusher.email}}
 
 jobs:
     build:
@@ -19,18 +20,18 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
+            - run: echo "$EMAIL"
+
             - name: Display Branch Name
-              run: echo "$BRANCH_NAME"
+              run:
+                  echo "$BRANCH_NAME"
 
-        
-
-
-                 # ------ Commit Changes ------
+                  # ------ Commit Changes ------
             - name: Pull
               uses: EndBug/add-and-commit@v9
               with:
                   pull: '--rebase origin main'
-              
+
             - name: Dummy write
               run: echo //commit  >> src/main.jsx;
 
@@ -41,8 +42,7 @@ jobs:
                   add: '.'
                   commit: --signoff
                   message: 'Built Lang File'
-                  push: "-u origin ${{ github.head_ref || github.ref_name }}"
-
+                  push: '-u origin ${{ github.head_ref || github.ref_name }}'
 
             - name: Yarn
               run: yarn
