@@ -23,7 +23,7 @@ jobs:
               run: echo "$BRANCH_NAME"
 
             - name: Dummy write
-              run: echo echo //commit  >> src/main.jsx;
+              run: echo //commit  >> src/main.jsx;
 
             - uses: EndBug/add-and-commit@v9
               with:
