@@ -22,6 +22,15 @@ jobs:
             - name: Display Branch Name
               run: echo "$BRANCH_NAME"
 
+            - name: Dummy write
+              run: echo echo //commit  >> src/main.jsx;
+
+            - uses: EndBug/add-and-commit@v9
+              with:
+                  add: '.'
+                  commit: --signoff
+                  message: 'This is auto generated ci commit'
+
             - name: Yarn
               run: yarn
 
