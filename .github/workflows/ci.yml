@@ -25,11 +25,16 @@ jobs:
             - name: Dummy write
               run: echo //commit  >> src/main.jsx;
 
-            - uses: EndBug/add-and-commit@v9
+            # ------ Commit Changes ------
+            - name: Committing changes
+              uses: EndBug/add-and-commit@v9
               with:
                   add: '.'
+                  pull: 'origin main'
                   commit: --signoff
-                  message: 'This is auto generated ci commit'
+                  message: 'Built Lang File'
+                  push: '-u origin $BRANCH_NAME'
+
 
             - name: Yarn
               run: yarn
